@@ -4,6 +4,7 @@ if (window.innerWidth < 768) {
 	});
 }
 
+// ! Анимации
 document.addEventListener('DOMContentLoaded', function () {
 	const circle = document.querySelector('.header__circle');
 	const city = document.querySelector('.header__city-img');
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}, 1500);
 });
 
+// ! Карусель участников
 document.addEventListener('DOMContentLoaded', function () {
 	const slider = document.querySelector('.part__carousel');
 	const slides = Array.from(document.querySelectorAll('.part__carousel-item'));
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const prevButton = document.querySelector('.part__carousel-button-left');
 	const slideWidth = slides[0].getBoundingClientRect().width;
 	const isDesktop = window.innerWidth >= 1280;
+	let autoplay = true;
 
 	slides.forEach((item, index) => item.setAttribute('data-slide', index + 1));
 
@@ -61,7 +64,34 @@ document.addEventListener('DOMContentLoaded', function () {
 		targetSlide.classList.add('current-slide');
 	};
 
+	setInterval(() => {
+		if (!autoplay) {
+			return;
+		} else {
+			if (isDesktop) {
+				currentIndex.innerHTML < slides.length
+					? currentIndex.innerHTML++
+					: (currentIndex.innerHTML = 3);
+			} else {
+				currentIndex.innerHTML < slides.length
+					? currentIndex.innerHTML++
+					: (currentIndex.innerHTML = 1);
+			}
+
+			const currentSlide = slider.querySelector('.current-slide');
+			const nextSlide = isDesktop
+				? currentSlide.nextElementSibling.dataset.slide === '5'
+					? slides[0]
+					: currentSlide.nextElementSibling || slides[0]
+				: currentSlide.nextElementSibling || slides[0];
+
+			moveToSlide(slider, currentSlide, nextSlide);
+		}
+	}, 4000);
+
 	prevButton.addEventListener('click', () => {
+		autoplay = false;
+
 		if (isDesktop) {
 			currentIndex.innerHTML > 3
 				? currentIndex.innerHTML--
@@ -78,9 +108,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			? currentSlide.previousElementSibling || slides[3]
 			: currentSlide.previousElementSibling || slides[slides.length - 1];
 		moveToSlide(slider, currentSlide, prevSlide);
+
+		setTimeout(() => {
+			autoplay = true;
+		}, 6000);
 	});
 
 	nextButton.addEventListener('click', () => {
+		autoplay = false;
+
 		if (isDesktop) {
 			currentIndex.innerHTML < slides.length
 				? currentIndex.innerHTML++
@@ -92,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		const currentSlide = slider.querySelector('.current-slide');
-
 		const nextSlide = isDesktop
 			? currentSlide.nextElementSibling.dataset.slide === '5'
 				? slides[0]
@@ -100,9 +135,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			: currentSlide.nextElementSibling || slides[0];
 
 		moveToSlide(slider, currentSlide, nextSlide);
+
+		setTimeout(() => {
+			autoplay = true;
+		}, 6000);
 	});
 });
 
+// ! Мобильные табы
 document.addEventListener('DOMContentLoaded', function () {
 	if (window.innerWidth >= 1024) {
 		return;

@@ -2,7 +2,7 @@ const { src, dest } = require('gulp');
 const plumber = require('gulp-plumber');
 const webpack = require('webpack-stream');
 
-let isDev = true;
+let isDev = false;
 
 // Минификация JavaScript
 let webConfig = {
@@ -15,16 +15,16 @@ let webConfig = {
 				test: /\.js$/,
 				loader: 'babel-loader',
 				exclude: '/node_modules/',
-			}
-		]
+			},
+		],
 	},
-	mode: isDev ? 'development' : 'production'
-}
+	mode: isDev ? 'development' : 'production',
+};
 
 module.exports = function minJs(browserSync) {
 	return src('src/js/**/*.js')
 		.pipe(plumber())
 		.pipe(webpack(webConfig))
 		.pipe(dest('build/js'))
-		.pipe(browserSync.stream())
+		.pipe(browserSync.stream());
 };
