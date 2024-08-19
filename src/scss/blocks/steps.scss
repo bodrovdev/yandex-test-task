@@ -63,6 +63,7 @@
 			height: 300px;
 			background: url('../img/image/steps-wrapper-bg.png');
 			background-size: cover;
+			user-select: none;
 
 			padding: 62px 20px 20px 20px;
 			margin: 145px 0 0 0;
@@ -87,6 +88,7 @@
 		height: 112px;
 		background: url('../img/image/steps-wrapper-bg.png');
 		background-size: cover;
+		user-select: none;
 
 		padding: 20px;
 
@@ -237,6 +239,8 @@
 		position: absolute;
 		right: -42px;
 		bottom: 26px;
+
+		user-select: none;
 
 		@include mixins.respond-to(mobileOnly) {
 			top: -140px;

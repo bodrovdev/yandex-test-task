@@ -70,6 +70,8 @@
 			}
 
 			&-img {
+				user-select: none;
+
 				margin: 0 0 28px 0;
 
 				@include mixins.respond-to(mobileOnly) {

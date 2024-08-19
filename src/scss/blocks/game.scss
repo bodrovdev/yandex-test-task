@@ -53,6 +53,7 @@
 			width: 609px;
 			height: 528px;
 			mix-blend-mode: color-burn;
+			user-select: none;
 
 			z-index: 10;
 
@@ -76,6 +77,8 @@
 			position: absolute;
 			right: -27.5px;
 			top: -29px;
+
+			user-select: none;
 
 			@include mixins.respond-to(mobileOnly) {
 				right: auto;
@@ -127,6 +130,8 @@
 	.game__graphic-chess,
 	.game__graphic-hand {
 		position: absolute;
+
+		user-select: none;
 	}
 
 	&__table {
