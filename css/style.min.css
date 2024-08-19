@@ -119,7 +119,7 @@ textarea {
   .page-header {
     flex-direction: column;
     height: 100dvh;
-    min-height: 650px
+    min-height: 760px
   }
 }
 .page-content {
