@@ -1,0 +1,68 @@
+@use '../mixins';
+
+.lection {
+	display: flex;
+
+	width: 100%;
+	min-height: 250px;
+
+	margin: 80px 0 0 0;
+
+	@include mixins.respond-to(mobileOnly) {
+		min-height: 565px;
+
+		margin: 49px 0 0 0;
+	}
+
+	@include mixins.respond-to(tabletOnly) {
+		margin: 40px 0 0 0;
+	}
+
+	& .base-container {
+		position: relative;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+
+		@include mixins.respond-to(mobileOnly) {
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+	}
+
+	&__text {
+		font-family: 'Merriweather', system-ui, sans-serif;
+		font-size: 36px;
+		font-weight: 400;
+		text-transform: uppercase;
+		line-height: 135%;
+		word-wrap: break-word;
+
+		@include mixins.respond-to(mobileOnly) {
+			display: inline-block;
+
+			font-size: 28px;
+
+			margin: 0 0 14px 0;
+		}
+	}
+
+	&__redtext {
+		font-weight: 700;
+		color: #f54932;
+	}
+
+	&__mobile-bottom {
+		@include mixins.respond-to(mobileOnly) {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	&__img {
+		width: 335px;
+	}
+}

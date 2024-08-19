@@ -1,0 +1,43 @@
+{
+	"name": "gulp-starter",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "gulp",
+		"build": "gulp build",
+		"postinstall": "patch-package",
+		"cz": "npm exec git-cz",
+		"deploy": "gh-pages -d build"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@alexlafroscia/postcss-color-mod-function": "^4.0.0",
+		"@babel/core": "^7.18.9",
+		"@babel/preset-env": "^7.18.9",
+		"babel-loader": "^8.2.5",
+		"browser-sync": "^2.27.7",
+		"del": "^6.0.0",
+		"gh-pages": "^4.0.0",
+		"git-cz": "^4.8.0",
+		"gulp": "^4.0.2",
+		"gulp-babel": "^8.0.0",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-file-include": "^2.3.0",
+		"gulp-plumber": "^1.2.1",
+		"gulp-postcss": "^9.0.1",
+		"gulp-sass": "^5.0.0",
+		"gulp-svg-sprite": "^1.5.0",
+		"gulp-svgmin": "^4.1.0",
+		"gulp-terser": "^2.1.0",
+		"patch-package": "^7.0.0",
+		"postcss-preset-env": "^7.2.3",
+		"require-dir": "^1.2.0",
+		"sass": "^1.45.0",
+		"webpack-stream": "^7.0.0"
+	},
+	"dependencies": {}
+}

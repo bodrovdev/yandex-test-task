@@ -1,0 +1,49 @@
+@use '../mixins';
+
+.main-nav {
+	&__logo {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		padding: 26px 0 0 0;
+
+		@include mixins.respond-to(mobileOnly) {
+			padding: 18px 0 0 0;
+		}
+
+		& svg {
+			margin: 0 1.5px 0 0;
+
+			@include mixins.respond-to(mobileOnly) {
+				position: relative;
+				bottom: 2px;
+
+				width: 18.75px;
+				height: 30px;
+			}
+
+			&:last-of-type {
+				margin: 0;
+			}
+		}
+
+		&-text {
+			display: inline-block;
+
+			height: 36px;
+
+			font-size: 17px;
+			font-weight: 700;
+			line-height: 108%;
+			text-transform: uppercase;
+			color: #595653;
+
+			margin: 0 0 0 6px;
+
+			@include mixins.respond-to(mobileOnly) {
+				font-size: 14.4px;
+			}
+		}
+	}
+}

@@ -1,0 +1,61 @@
+diff --git a/node_modules/gulp-file-include/lib/index.js b/node_modules/gulp-file-include/lib/index.js
+index 89168d8..d4ac34d 100644
+--- a/node_modules/gulp-file-include/lib/index.js
++++ b/node_modules/gulp-file-include/lib/index.js
+@@ -13,9 +13,9 @@ const path = require('path')
+ const fs = require('fs')
+ const JSON5 = require('json5')
+ 
+-module.exports = function(opts) {
++module.exports = function (opts) {
+   if (typeof opts === 'string') {
+-    opts = {prefix: opts}
++    opts = { prefix: opts }
+   }
+ 
+   opts = extend({}, {
+@@ -44,7 +44,7 @@ module.exports = function(opts) {
+     if (file.isNull()) {
+       cb(null, file)
+     } else if (file.isStream()) {
+-      file.contents.pipe(concat(function(data) {
++      file.contents.pipe(concat(function (data) {
+         try {
+           data = include(file, String(data))
+           cb(null, data)
+@@ -186,7 +186,7 @@ module.exports = function(opts) {
+           contents: Buffer.from(includeContent)
+         })
+ 
+-        recFile = include(recFile, includeContent, args[3] ? JSON5.parse(args[3]) : {}, inst.sourceFile != '' ? inst.sourceFile : currentFilename)
++        recFile = include(recFile, includeContent, args[3] ? JSON5.parse(args[3].replace(/(\r|\n)/g, " ")) : {}, inst.sourceFile != '' ? inst.sourceFile : currentFilename)
+ 
+         return String(recFile.contents)
+       }
+@@ -213,7 +213,7 @@ module.exports = function(opts) {
+         } else {
+           // loop array in the function
+           try {
+-            arr = JSON5.parse(args[3])
++            arr = JSON5.parse(args[3].replace(/(\r|\n)/g, " "))
+           } catch (err) {
+             return console.error(err, args[3])
+           }
+@@ -275,7 +275,7 @@ module.exports = function(opts) {
+ 
+     // now get the ordered list of filters
+     var filterlist = match.split('(').slice(0, -1)
+-    filterlist = filterlist.map(function(str) {
++    filterlist = filterlist.map(function (str) {
+       return opts.filters[str.trim()]
+     })
+ 
+@@ -296,7 +296,7 @@ module.exports = function(opts) {
+ }
+ 
+ function compose(f, g) {
+-  return function(x) {
++  return function (x) {
+     return f(g(x))
+   }
+ }

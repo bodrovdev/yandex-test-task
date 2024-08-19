@@ -1,0 +1,13 @@
+@use '../mixins';
+
+@include mixins.font-face('GolosText', normal, 400);
+@include mixins.font-face('GolosText', normal, 500);
+@include mixins.font-face('GolosText', normal, 600);
+@include mixins.font-face('GolosText', normal, 700);
+@include mixins.font-face('GolosText', normal, 800);
+@include mixins.font-face('GolosText', normal, 900);
+
+@include mixins.font-face('Merriweather', normal, 300);
+@include mixins.font-face('Merriweather', normal, 400);
+@include mixins.font-face('Merriweather', normal, 700);
+@include mixins.font-face('Merriweather', normal, 900);

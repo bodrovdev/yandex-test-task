@@ -1,0 +1,180 @@
+@use '../mixins';
+
+.part {
+	position: relative;
+
+	overflow: hidden;
+
+	padding: 0 0 200px 0;
+	margin: 200px 0 0 0;
+
+	@include mixins.respond-to(mobileOnly) {
+		padding: 0 0 215px 0;
+		margin: 122px 0 0 0;
+	}
+
+	@include mixins.respond-to(tabletOnly) {
+		padding: 0 0 140px 0;
+		margin: 80px 0 0 0;
+	}
+
+	& .base-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+
+		margin-bottom: 61px;
+
+		@include mixins.respond-to(mobileOnly) {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__carousel-container {
+		max-width: 1222px;
+		overflow: hidden;
+
+		margin: 0 auto;
+	}
+
+	&__carousel {
+		display: flex;
+		gap: 20px;
+
+		transition: transform 0.5s ease;
+
+		@include mixins.respond-to(mobileOnly) {
+			gap: 0;
+		}
+
+		@include mixins.respond-to(tabletOnly) {
+			gap: 0;
+		}
+
+		&-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+
+			width: 394px;
+
+			@include mixins.respond-to(mobileOnly) {
+				width: 100%;
+			}
+
+			@include mixins.respond-to(tabletOnly) {
+				width: 100%;
+			}
+
+			&-img {
+				margin: 0 0 28px 0;
+
+				@include mixins.respond-to(mobileOnly) {
+					width: 244px;
+					height: 244px;
+				}
+			}
+
+			&-title {
+				display: inline-block;
+
+				font-size: 24px;
+				font-weight: 600;
+				line-height: 28.8px;
+
+				margin: 0 0 6px 0;
+			}
+
+			&-rank {
+				display: inline-block;
+
+				font-size: 20px;
+				font-weight: 400;
+				line-height: 24px;
+
+				margin: 0 0 20px 0;
+			}
+
+			&-button {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				width: 113px;
+				height: 35px;
+
+				border-radius: 62px;
+				border: 1px #3057a2 solid;
+
+				font-size: 16px;
+				font-weight: 500;
+				line-height: 19.2px;
+				color: #3057a2;
+
+				padding: 12px;
+
+				transition: background 0.1s ease-in-out, color 0.1s ease-in-out,
+					transform 0.1s ease-in-out;
+
+				&:active {
+					transform: scale(0.9);
+
+					transition: background 0.1s ease-in-out, color 0.1s ease-in-out,
+						transform 0.1s ease-in-out;
+				}
+			}
+
+			@media (min-width: 1024px) {
+				&-button:hover {
+					background: #3057a2;
+
+					color: #fff;
+
+					transition: background 0.1s ease-in-out, color 0.1s ease-in-out,
+						transform 0.1s ease-in-out;
+				}
+			}
+		}
+
+		&-buttons {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 14px;
+
+			min-width: 151px;
+
+			font-size: 16px;
+
+			@include mixins.respond-to(mobileOnly) {
+				position: absolute;
+				bottom: 138px;
+				left: 50%;
+
+				transform: translateX(-50%);
+
+				&-count {
+					min-width: 35.14px;
+				}
+			}
+
+			@include mixins.respond-to(tabletOnly) {
+				min-width: 152px;
+			}
+
+			&-current {
+				display: inline-block;
+
+				min-width: 10px;
+				opacity: 1 !important;
+			}
+
+			&-total {
+				opacity: 0.6;
+			}
+		}
+	}
+}

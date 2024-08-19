@@ -1,0 +1,288 @@
+@use '../mixins';
+
+.game {
+	position: relative;
+
+	display: flex;
+
+	width: 100%;
+	max-width: 1366px;
+
+	margin: 64px auto 0 auto;
+
+	@include mixins.respond-to(tabletOnly) {
+		margin: 40px auto 0 auto;
+	}
+
+	& .base-container {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 44px;
+
+		@include mixins.respond-to(mobileOnly) {
+			flex-direction: column;
+			gap: 0;
+		}
+
+		@include mixins.respond-to(tabletOnly) {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 20px;
+		}
+	}
+
+	&__graphic {
+		position: relative;
+
+		width: 474px;
+		height: 527px;
+		overflow: visible;
+
+		@include mixins.respond-to(mobileOnly) {
+			width: 100%;
+			height: 396px;
+		}
+
+		&-bg {
+			position: absolute;
+			top: -30px;
+			left: -27px;
+
+			width: 609px;
+			height: 528px;
+			mix-blend-mode: color-burn;
+
+			z-index: 10;
+
+			@include mixins.respond-to(mobileOnly) {
+				top: 0;
+				left: 0;
+
+				width: 100%;
+				height: 375px;
+			}
+
+			@include mixins.respond-to(tabletOnly) {
+				top: 0;
+				left: 50%;
+
+				transform: translateX(-50%);
+			}
+		}
+
+		&-base {
+			position: absolute;
+			right: -27.5px;
+			top: -29px;
+
+			@include mixins.respond-to(mobileOnly) {
+				right: auto;
+				left: -20px;
+
+				width: 373.86px;
+			}
+		}
+
+		&-effect {
+			bottom: 13px;
+			left: -16px;
+
+			@include mixins.respond-to(mobileOnly) {
+				bottom: 30px;
+				left: 3px;
+
+				width: 150.96px;
+				height: 173.23px;
+			}
+		}
+
+		&-chess {
+			bottom: -2px;
+			left: 62px;
+
+			@include mixins.respond-to(mobileOnly) {
+				bottom: 46px;
+				left: 56px;
+
+				width: 94.94px;
+			}
+		}
+
+		&-hand {
+			right: -5px;
+			bottom: -14px;
+
+			@include mixins.respond-to(mobileOnly) {
+				right: 0px;
+				bottom: 33px;
+
+				width: 192.2px;
+			}
+		}
+	}
+
+	.game__graphic-effect,
+	.game__graphic-chess,
+	.game__graphic-hand {
+		position: absolute;
+	}
+
+	&__table {
+		&-text {
+			font-family: 'Merriweather', system-ui, sans-serif;
+			font-size: 36px;
+			font-weight: 400;
+			text-transform: uppercase;
+			line-height: 135%;
+			word-wrap: break-word;
+
+			@include mixins.respond-to(mobileOnly) {
+				font-size: 28px;
+			}
+
+			& span {
+				font-weight: 700;
+				color: #f54932;
+			}
+		}
+
+		&-scheme {
+			width: 704px;
+			min-height: 248px;
+			border-collapse: collapse;
+
+			margin: 44px 0 0 0;
+
+			@include mixins.respond-to(mobileOnly) {
+				width: 100%;
+				min-height: 392px;
+
+				& tbody {
+					display: flex;
+					flex-direction: column;
+					gap: 16px;
+				}
+			}
+
+			&-row {
+				height: 54px;
+
+				@include mixins.respond-to(mobileOnly) {
+					display: flex;
+					flex-direction: column;
+					gap: 12px;
+
+					height: auto;
+					border-bottom: 1px solid #d0d0d0;
+
+					padding: 0 0 16px 0;
+
+					&--row {
+						flex-direction: row;
+						justify-content: flex-start;
+					}
+				}
+
+				&--first {
+					height: 40px;
+
+					@include mixins.respond-to(mobileOnly) {
+						height: auto;
+					}
+
+					& .game__table-scheme-column {
+						padding-bottom: 15px;
+
+						@include mixins.respond-to(mobileOnly) {
+							padding: 0;
+						}
+					}
+				}
+				&--last {
+					height: 40px;
+
+					@include mixins.respond-to(mobileOnly) {
+						height: auto;
+						border: none;
+					}
+
+					& .game__table-scheme-column {
+						border-bottom: none;
+
+						padding-top: 15px;
+
+						@include mixins.respond-to(mobileOnly) {
+							padding: 0;
+						}
+					}
+				}
+			}
+
+			&-column {
+				border-bottom: 1px solid #d0d0d0;
+
+				font-size: 20px;
+				line-height: 24px;
+
+				padding: 0;
+
+				@include mixins.respond-to(mobileOnly) {
+					border: none;
+				}
+
+				&-mistake {
+					position: relative;
+
+					display: inline;
+
+					margin-right: 6px;
+
+					&::after {
+						content: '';
+						position: absolute;
+						top: 12px;
+						left: 0;
+
+						width: 100%;
+						height: 0;
+						border: 2px #f54932 solid;
+					}
+				}
+
+				&:first-child {
+					width: 306px;
+
+					@include mixins.respond-to(mobileOnly) {
+						width: auto;
+					}
+				}
+
+				&:last-child {
+					border-left: 1px solid #d0d0d0;
+
+					font-weight: 600;
+
+					padding-left: 16px;
+
+					@include mixins.respond-to(mobileOnly) {
+						border: none;
+
+						padding: 0;
+					}
+				}
+			}
+		}
+
+		&-bluetext {
+			display: inline-block;
+
+			margin: 48px 0 0 0;
+
+			@include mixins.respond-to(mobileOnly) {
+				margin: 19px 0 0 0;
+			}
+		}
+	}
+}
