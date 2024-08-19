@@ -116,10 +116,15 @@ textarea {
   overflow: hidden
 }
 @media only screen and (min-width:0) and (max-width:767px) {
+  #root,
+  body,
+  html {
+    min-height: 650px
+  }
   .page-header {
     flex-direction: column;
-    height: 100dvh;
-    min-height: 760px
+    height: 650px;
+    min-height: 100dvh
   }
 }
 .page-content {
